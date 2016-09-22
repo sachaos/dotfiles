@@ -286,13 +286,17 @@ you should place your code here."
 
   ;; CUA OS copypasta even in ncurses mode
   (case system-type
-    ('darwin (unless window-system
-               (setq interprogram-cut-function
-                     (lambda (text &optional push)
-                       (let* ((process-connection-type nil)
-                              (pbproxy (start-process "pbcopy" "pbcopy" "/usr/bin/pbcopy")))
-                         (process-send-string pbproxy text)
-                         (process-send-eof pbproxy))))))
+    ('darwin (defun copy-from-osx ()
+               (shell-command-to-string "pbpaste"))
+
+             (defun paste-to-osx (text &optional push)
+               (let ((process-connection-type nil))
+                 (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+                   (process-send-string proc text)
+                   (process-send-eof proc))))
+
+             (setq interprogram-cut-function 'paste-to-osx)
+             (setq interprogram-paste-function 'copy-from-osx))
     ('gnu/linux (progn
                   (setq x-select-enable-clipboard t)
                   (defun xsel-cut-function (text &optional push)
