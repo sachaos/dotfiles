@@ -16,6 +16,8 @@ EOF
 
 antigen apply
 
+antigen use oh-my-zsh
+
 antigen theme candy
 
 source .zshrc.custom
