@@ -1,0 +1,34 @@
+[user]
+	email = sakataku7@gmail.com
+	name = sachaos
+
+[core]
+    editor = "emacsclient -nw -a ''"
+	excludesfile = ~/.gitignore_global
+
+[alias]
+    log = log --oneline --decorate --graph
+    pr  = pull-request
+    pl  = pull
+    ps  = push
+    st  = status
+    co  = checkout
+    cp  = cherry-pick
+    a   = add
+    rmc = rm --cached
+    cm  = commit
+    cma = commit --amend
+    d   = diff
+    dh  = diff HEAD
+	openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
+
+[ghq]
+    root = ~/.go/src
+[push]
+	default = matching
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

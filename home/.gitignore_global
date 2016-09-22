@@ -1,0 +1,15 @@
+*~
+*.pyc
+/**/node_modules/
+/**/bower_components/
+/**/jspm_packages
+npm-debug.log
+*.sqlite3
+*.db
+.envrc
+\#*
+.DS_Store
+.envrc
+/vendor/
+.bundle/
+.ruby-version
