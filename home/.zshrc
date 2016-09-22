@@ -18,7 +18,7 @@ antigen apply
 
 antigen use oh-my-zsh
 
-antigen theme candy
+antigen theme ys
 
 source .zshrc.custom
 source .zshrc.alias
