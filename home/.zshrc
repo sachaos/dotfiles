@@ -7,7 +7,7 @@ colors
 
 # load antigen plugins
 antigen bundles <<EOF
-  zsh-syntax-highlighting
+  zsh-users/zsh-completions
   autoenv
   git
 
@@ -33,3 +33,5 @@ case "${OSTYPE}" in
         [ -f .zshrc.linux ] && source .zshrc.linux
         ;;
 esac
+
+antigen bundle zsh-users/zsh-syntax-highlighting
