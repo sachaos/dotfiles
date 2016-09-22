@@ -1,0 +1,7 @@
+# settings alias
+alias emacsq='/usr/bin/emacs -q'
+alias e='emacsclient -nw -a ""'
+alias emacs='emacsclient -nw -a ""'
+alias ekill='emacsclient -e "(kill-emacs)"'
+alias git='hub'
+alias be='bundle exec'
