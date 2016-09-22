@@ -6,18 +6,13 @@ autoload -Uz colors
 colors
 
 # load antigen plugins
-antigen bundles <<EOF
-  zsh-users/zsh-completions
-  autoenv
-  git
-
-  oh-my-zsh
-EOF
-
+antigen bundle zsh-users/zsh-completions
+antigen bundle autoenv
+antigen bundle git
+antigen bundle oh-my-zsh
 antigen apply
 
 antigen use oh-my-zsh
-
 antigen theme ys
 
 source .zshrc.custom
@@ -35,3 +30,4 @@ case "${OSTYPE}" in
 esac
 
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions

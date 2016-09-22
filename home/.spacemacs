@@ -277,6 +277,7 @@ you should place your code here."
    '(enh-ruby-deep-indent-paren nil)
    '(global-linum-mode t)
    '(projectile-use-git-grep t)
+   '(vc-follow-symlinks t)
    )
 
   ;; keybindings
