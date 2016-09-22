@@ -135,6 +135,7 @@ function do_enter () {
         git status -sb
     fi
     echo
+    echo
     zle reset-prompt
     return 0
 }
