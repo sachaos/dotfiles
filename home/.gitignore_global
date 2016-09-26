@@ -7,6 +7,7 @@ npm-debug.log
 *.sqlite3
 *.db
 .envrc
+.env
 \#*
 .DS_Store
 .envrc
