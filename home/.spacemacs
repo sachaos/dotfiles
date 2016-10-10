@@ -281,9 +281,6 @@ you should place your code here."
    '(vc-follow-symlinks t)
    )
 
-  (projectile-global-mode 1)
-  (setq projectile-mode-line nil)
-
   ;; keybindings
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
   (define-key key-translation-map (kbd "C-_") (kbd "C-h"))
