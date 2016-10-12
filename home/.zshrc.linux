@@ -1,13 +1,19 @@
 export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$PATH:~/bin
+
+# ruby
 eval "$(rbenv init - zsh)"
 
+# node
 source ~/.nvm/nvm.sh
 
 # elixir
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
 
 # golang
-[[ -s "/home/sachaos/.gvm/scripts/gvm" ]] && source "/home/sachaos/.gvm/scripts/gvm"
+export GOPATH=~/gocode
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
 
 # python
 export PYENV_ROOT=$HOME/.pyenv
