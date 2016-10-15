@@ -15,17 +15,17 @@ antigen apply
 antigen use oh-my-zsh
 antigen theme ys
 
-source .zshrc.custom
-source .zshrc.alias
+source ~/.zshrc.custom
+source ~/.zshrc.alias
 
 case "${OSTYPE}" in
     # MacOSX
     darwin*)
-        [ -f .zshrc.osx ] && source .zshrc.osx
+        [ -f .zshrc.osx ] && source ~/.zshrc.osx
         ;;
     # Linux
     linux*)
-        [ -f .zshrc.linux ] && source .zshrc.linux
+        [ -f .zshrc.linux ] && source ~/.zshrc.linux
         ;;
 esac
 
