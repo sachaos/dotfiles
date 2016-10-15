@@ -60,6 +60,8 @@ values."
    dotspacemacs-additional-packages
    '(
      nginx-mode
+     dash
+     s
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -284,6 +286,67 @@ you should place your code here."
   ;; keybindings
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
   (define-key key-translation-map (kbd "C-_") (kbd "C-h"))
+
+  ;; markdown
+  ;; header to list
+  (defun head2list/prefix-count (prefix string &optional count)
+    (setq count (or count 0))
+    (if (string-prefix-p prefix string)
+        (head2list/prefix-count prefix (string-remove-prefix prefix string) (+ count 1))
+      count))
+
+  (defun head2list/indent-level (string)
+    (head2list/prefix-count "  " string))
+
+  (defun head2list/header-level (string)
+    (head2list/prefix-count "#" string))
+
+  (defun head2list/list-format-p (string)
+    "judge whether given string is list format or not"
+    (s-matches-p "^[[:blank:]]*\\*[[:blank:]].*" string))
+
+  (defun head2list/header-format-p (string)
+    "judge whether given string is header format or not"
+    (s-matches-p "^#+[[:blank:]].*" string))
+
+  (defun head2list/extract-list-title (string)
+    (nth 1 (s-match "^[[:blank:]]*\\*[[:blank:]]\\(.*\\)" string)))
+
+  (defun head2list/extract-header-title (string)
+    (nth 1 (s-match "^#+[[:blank:]]\\(.*\\)" string)))
+
+  (defun head2list/list2header-string (string)
+    (cond ((head2list/list-format-p string)
+           (let
+               ((level (head2list/indent-level string))
+                (title (head2list/extract-list-title string)))
+             (s-concat (s-repeat (+ level 1) "#") " " title)))
+          nil))
+
+  (defun head2list/header2list-string (string)
+    (cond ((head2list/header-format-p string)
+           (let
+               ((level (head2list/header-level string))
+                (title (head2list/extract-header-title string)))
+             (s-concat (s-repeat (- level 1) "  ") "* " title)))
+          nil))
+
+  (defun head2list/list2header (text)
+    (s-join "\n\n" (-non-nil (-map `head2list/list2header-string (s-lines text)))))
+
+  (defun head2list/header2list (text)
+    (s-join "\n" (-non-nil (-map `head2list/header2list-string (s-lines text)))))
+
+  (defun head2list/transform (text)
+      (if (head2list/list-format-p (car (s-lines text)))
+          (head2list/list2header text)
+        (head2list/header2list text)))
+
+  (defun head2list/transform-region (start end)
+    (interactive "r")
+    (let ((text (buffer-substring start end)))
+      (goto-char start)
+      (insert (s-concat (head2list/transform text) "\n\n"))))
 
   ;; CUA OS copypasta even in ncurses mode
   (case system-type
