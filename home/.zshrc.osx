@@ -5,7 +5,6 @@ eval "$(rbenv init - zsh)"
 export GOPATH=~/gocode
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/bin
-export PATH=$PATH:/usr/local/go/bin
 
 source ~/.nvm/nvm.sh
 
