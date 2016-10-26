@@ -110,6 +110,18 @@ function peco-gem () {
 }
 zle -N peco-gem
 
+# todoist commands
+function peco-todoist-close() {
+    local SELECTED_ITEMS="$(todoist list | peco | cut -d ' ' -f 1 | tr '\n' ' ')"
+    if [ -n "$SELECTED_ITEMS" ]; then
+        BUFFER="todoist close $(echo "$SELECTED_ITEMS" | tr '\n' ' ')"
+        CURSOR=$#BUFFER
+    fi
+    zle accept-line
+}
+zle -N peco-todoist-close
+bindkey "^xo" peco-todoist-close
+
 #################################################
 ## various functions
 #################################################
