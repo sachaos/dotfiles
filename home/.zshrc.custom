@@ -136,6 +136,7 @@ function do_enter () {
     fi
     echo
     echo
+    echo
     zle reset-prompt
     return 0
 }
