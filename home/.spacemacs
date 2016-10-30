@@ -46,6 +46,7 @@ values."
      (javascript :variables
                  js2-basic-offset 2)
      react
+     shell-scripts
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -348,6 +349,13 @@ you should place your code here."
     (let ((text (buffer-substring start end)))
       (goto-char start)
       (insert (s-concat (head2list/transform text) "\n\n"))))
+
+  ;; add .zshrc files to auto-mode-alist
+  (dolist (pattern '("\\.zshrc.custom\\'"
+                     "\\.zshrc.alias\\'"
+                     "\\.zshrc.linux\\'"
+                     "\\.zshrc.osx\\'"))
+    (add-to-list 'auto-mode-alist (cons pattern 'sh-mode)))
 
   ;; CUA OS copypasta even in ncurses mode
   (case system-type
