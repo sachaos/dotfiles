@@ -113,6 +113,22 @@ zle -N peco-gem
 # todoist commands #
 ####################
 
+# todoist find task
+function peco-todoist-task () {
+    local SELECTED_TASK="$(todoist list | peco | head -n1 | cut -d ' ' -f 1)"
+    if [ -n "$SELECTED_TASK" ]; then
+        if [ -n "$LBUFFER" ]; then
+            local new_left="${LBUFFER%\ } $SELECTED_TASK"
+        else
+            local new_left="$SELECTED_TASK"
+        fi
+        BUFFER=${new_left}${RBUFFER}
+        CURSOR=${#new_left}
+    fi
+}
+zle -N peco-todoist-task
+bindkey "^xtt" peco-todoist-task
+
 # todoist find project
 function peco-todoist-project () {
     local SELECTED_PROJECT="$(todoist projects | peco | head -n1 | cut -d ' ' -f 1)"
