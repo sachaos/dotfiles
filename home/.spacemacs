@@ -357,6 +357,9 @@ you should place your code here."
                      "\\.zshrc.osx\\'"))
     (add-to-list 'auto-mode-alist (cons pattern 'sh-mode)))
 
+  (dolist (pattern '("\\.schema\\'"))
+    (add-to-list 'auto-mode-alist (cons pattern 'ruby-mode)))
+
   ;; CUA OS copypasta even in ncurses mode
   (case system-type
     ('darwin (defun copy-from-osx ()
