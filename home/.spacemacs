@@ -276,6 +276,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/"))
+  (when (< emacs-major-version 24)
+    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
   ;; for google-translate
   (custom-set-variables
