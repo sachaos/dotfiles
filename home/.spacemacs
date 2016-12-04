@@ -35,6 +35,7 @@ values."
            ruby-enable-enh-ruby-mode t)
      ruby-on-rails
      elixir
+     erlang
      python
      lua
      go
