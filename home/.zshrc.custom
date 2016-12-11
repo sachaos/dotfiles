@@ -26,7 +26,7 @@ bindkey '^r' peco-select-history
 function peco-find() {
     local current_buffer=$BUFFER
     # .git系など不可視フォルダは除外
-    local selected_file="$(find . -maxdepth 5 ! -path "*/.git*" | grep -v '~$' | sort | peco | sed -e "s/)/\\\)/g" -e "s/(/\\\(/g" -e "s/\ /\\\ /g" -e "s/#/\\\#/g" | tr '\n' ' ')"
+    local selected_file="$(find . -maxdepth 8 ! -path "*/.git*" | grep -v '~$' | sort | peco | sed -e "s/)/\\\)/g" -e "s/(/\\\(/g" -e "s/\ /\\\ /g" -e "s/#/\\\#/g" | tr '\n' ' ')"
     if [ -n "$selected_file" ]; then
         BUFFER="${current_buffer} ${selected_file}"
         CURSOR=$#BUFFER
