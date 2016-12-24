@@ -13,11 +13,5 @@ source ~/.nvm/nvm.sh
 # android
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
-# python
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # other scripts
 export PATH=$PATH:~/bin/scripts
