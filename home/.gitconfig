@@ -6,6 +6,9 @@
     editor = "emacsclient -nw -a ''"
 	excludesfile = ~/.gitignore_global
 
+[commit]
+	template = ~/.commit_template
+
 [alias]
     log = log --oneline --decorate --graph
     pr  = pull-request
