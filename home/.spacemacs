@@ -278,6 +278,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; add GOPATH to exec-path
+  (add-to-list 'exec-path (concat (getenv "GOPATH") "/bin"))
+
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/"))
   (when (< emacs-major-version 24)
