@@ -277,8 +277,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; add GOPATH to exec-path
-  (add-to-list 'exec-path (concat (getenv "GOPATH") "/bin"))
+
+  ;; Load shell PATH as exec-path
+  (setq exec-path (parse-colon-path (s-trim (shell-command-to-string "$SHELL -c 'echo $PATH'"))))
 
   (add-to-list 'package-archives
                '("melpa" . "https://melpa.org/packages/"))
