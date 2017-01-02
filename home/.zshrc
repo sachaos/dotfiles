@@ -18,19 +18,5 @@ antigen theme ys
 source ~/.zshrc.custom
 source ~/.zshrc.alias
 
-case "${OSTYPE}" in
-    # MacOSX
-    darwin*)
-        [ -f .zshrc.osx ] && source ~/.zshrc.osx
-        ;;
-    # Linux
-    linux*)
-        [ -f .zshrc.linux ] && source ~/.zshrc.linux
-        ;;
-esac
-
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-
-# added by travis gem
-[ -f /Users/takumasasakao/.travis/travis.sh ] && source /Users/takumasasakao/.travis/travis.sh
