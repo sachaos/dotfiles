@@ -32,8 +32,7 @@ values."
      git
      github
      markdown
-     (ruby :variables
-           ruby-enable-enh-ruby-mode t)
+     ruby
      ruby-on-rails
      elixir
      erlang
@@ -443,6 +442,9 @@ Uses `current-date-time-format' for the formatting the date/time"
   (add-hook 'markdown-mode-hook
             #'(lambda()
                 (add-hook 'after-save-hook 'cleanup-org-tables  nil 'make-it-local)))
+
+  ;; disable auto magic comment on ruby-mode
+  (defun ruby-mode-set-encoding () nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
