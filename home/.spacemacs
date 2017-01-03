@@ -6,6 +6,7 @@
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
 values."
+
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -295,6 +296,10 @@ you should place your code here."
    '(projectile-use-git-grep t)
    '(vc-follow-symlinks t)
    )
+
+  ;; mode-line view setting
+  (setq powerline-default-separator 'bar)
+  (setq dotspacemacs-mode-line-unicode-symbols nil)
 
   ;; keybindings
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
