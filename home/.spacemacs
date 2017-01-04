@@ -281,11 +281,6 @@ you should place your code here."
   ;; Load shell PATH as exec-path
   (setq exec-path (parse-colon-path (s-trim (shell-command-to-string "$SHELL -c 'echo $PATH'"))))
 
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/"))
-  (when (< emacs-major-version 24)
-    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-
   ;; for google-translate
   (custom-set-variables
    '(google-translate-default-source-language "en")
