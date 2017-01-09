@@ -68,6 +68,7 @@ values."
      dash
      s
      orgtbl-mode
+     init-loader
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -277,174 +278,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
-  ;; Load shell PATH as exec-path
-  (setq exec-path (parse-colon-path (s-trim (shell-command-to-string "$SHELL -c 'echo $PATH'"))))
-
-  ;; for google-translate
-  (custom-set-variables
-   '(google-translate-default-source-language "en")
-   '(google-translate-default-target-language "ja")
-   '(enh-ruby-add-encoding-comment-on-save nil)
-   '(enh-ruby-deep-indent-paren nil)
-   '(global-linum-mode t)
-   '(projectile-use-git-grep t)
-   '(vc-follow-symlinks t)
-   )
-
-  ;; mode-line view setting
-  (setq powerline-default-separator 'bar)
-  (setq dotspacemacs-mode-line-unicode-symbols nil)
-
-  ;; keybindings
-  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
-  (define-key key-translation-map (kbd "C-_") (kbd "C-h"))
-
-  ;; markdown
-  ;; header to list
-  (defun head2list/prefix-count (prefix string &optional count)
-    (setq count (or count 0))
-    (if (string-prefix-p prefix string)
-        (head2list/prefix-count prefix (string-remove-prefix prefix string) (+ count 1))
-      count))
-
-  (defun head2list/indent-level (string)
-    (head2list/prefix-count "  " string))
-
-  (defun head2list/header-level (string)
-    (head2list/prefix-count "#" string))
-
-  (defun head2list/list-format-p (string)
-    "judge whether given string is list format or not"
-    (s-matches-p "^[[:blank:]]*\\*[[:blank:]].*" string))
-
-  (defun head2list/header-format-p (string)
-    "judge whether given string is header format or not"
-    (s-matches-p "^#+[[:blank:]].*" string))
-
-  (defun head2list/extract-list-title (string)
-    (nth 1 (s-match "^[[:blank:]]*\\*[[:blank:]]\\(.*\\)" string)))
-
-  (defun head2list/extract-header-title (string)
-    (nth 1 (s-match "^#+[[:blank:]]\\(.*\\)" string)))
-
-  (defun head2list/list2header-string (string)
-    (cond ((head2list/list-format-p string)
-           (let
-               ((level (head2list/indent-level string))
-                (title (head2list/extract-list-title string)))
-             (s-concat (s-repeat (+ level 1) "#") " " title)))
-          nil))
-
-  (defun head2list/header2list-string (string)
-    (cond ((head2list/header-format-p string)
-           (let
-               ((level (head2list/header-level string))
-                (title (head2list/extract-header-title string)))
-             (s-concat (s-repeat (- level 1) "  ") "* " title)))
-          nil))
-
-  (defun head2list/list2header (text)
-    (s-join "\n\n" (-non-nil (-map `head2list/list2header-string (s-lines text)))))
-
-  (defun head2list/header2list (text)
-    (s-join "\n" (-non-nil (-map `head2list/header2list-string (s-lines text)))))
-
-  (defun head2list/transform (text)
-      (if (head2list/list-format-p (car (s-lines text)))
-          (head2list/list2header text)
-        (head2list/header2list text)))
-
-  (defun head2list/transform-region (start end)
-    (interactive "r")
-    (let ((text (buffer-substring start end)))
-      (goto-char start)
-      (insert (s-concat (head2list/transform text) "\n\n"))))
-
-  ;; add .zshrc files to auto-mode-alist
-  (dolist (pattern '("\\.zshrc.custom\\'"
-                     "\\.zshrc.alias\\'"
-                     "\\.zshrc.linux\\'"
-                     "\\.zshrc.osx\\'"))
-    (add-to-list 'auto-mode-alist (cons pattern 'sh-mode)))
-
-  (dolist (pattern '("\\.schema\\'"))
-    (add-to-list 'auto-mode-alist (cons pattern 'ruby-mode)))
-
-  ;; CUA OS copypasta even in ncurses mode
-  (case system-type
-    ('darwin (defun copy-from-osx ()
-               (shell-command-to-string "pbpaste"))
-
-             (defun paste-to-osx (text &optional push)
-               (let ((process-connection-type nil))
-                 (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-                   (process-send-string proc text)
-                   (process-send-eof proc))))
-
-             (setq interprogram-cut-function 'paste-to-osx)
-             (setq interprogram-paste-function 'copy-from-osx))
-    ('gnu/linux (progn
-                  (setq x-select-enable-clipboard t)
-                  (defun xsel-cut-function (text &optional push)
-                    (with-temp-buffer
-                      (insert text)
-                      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
-                  (defun xsel-paste-function()
-
-                    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
-                      (unless (string= (car kill-ring) xsel-output)
-                        xsel-output )))
-                  (setq interprogram-cut-function 'xsel-cut-function)
-                  (setq interprogram-paste-function 'xsel-paste-function))))
-
-  ;; insert date and time
-  (defvar current-date-format "%Y/%m/%d"
-    "Format of date to insert with `insert-current-date' func
-See help of `format-time-string' for possible replacements")
-
-  (defvar current-time-format "%H:%M:%S"
-    "Format of date to insert with `insert-current-time' func.
-Note the weekly scope of the command's precision.")
-
-  (defvar current-date-time-format "%Y/%m/%d %H:%M:%S"
-    "Format of datetime to insert with `insert-current-date-time' func.")
-
-  (defun insert-current-date ()
-    "insert the current date and time into current buffer.
-Uses `current-date-format' for the formatting the date/time."
-    (interactive)
-    (insert (format-time-string current-date-format (current-time)))
-    (insert "\n")
-    )
-
-  (defun insert-current-time ()
-    "insert the current time (1-week scope) into the current buffer."
-    (interactive)
-    (insert (format-time-string current-time-format (current-time)))
-    (insert "\n")
-    )
-
-  (defun insert-current-date-time ()
-    "insert the current date and time into current buffer.
-Uses `current-date-time-format' for the formatting the date/time"
-    (interactive)
-    (insert (format-time-string current-date-time-format (current-time)))
-    (insert "\n")
-    )
-
-  ;; table settings
-  (defun cleanup-org-tables ()
-    (save-excursion
-      (goto-char (point-min))
-      (while (search-forward "-+-" nil t) (replace-match "-|-"))))
-  (add-hook 'markdown-mode-hook 'orgtbl-mode)
-  (add-hook 'markdown-mode-hook
-            #'(lambda()
-                (add-hook 'after-save-hook 'cleanup-org-tables  nil 'make-it-local)))
-
-  ;; disable auto magic comment on ruby-mode
-  (defun ruby-mode-set-encoding () nil)
+  (init-loader-load "~/.emacs-inits")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -471,3 +305,31 @@ Uses `current-date-time-format' for the formatting the date/time"
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(enh-ruby-add-encoding-comment-on-save nil)
+ '(enh-ruby-deep-indent-paren nil)
+ '(global-linum-mode t)
+ '(google-translate-default-source-language "en" t)
+ '(google-translate-default-target-language "ja" t)
+ '(package-selected-packages
+   (quote
+    (init-loader go-eldoc company-go go-mode lua-mode zeal-at-point yaml-mode ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shm scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-end rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf projectile-rails popwin pip-requirements persp-mode paradox page-break-lines orgit open-junk-file nginx-mode neotree move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh-md flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu enh-ruby-mode emmet-mode elisp-slime-nav define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghc company-cabal company-anaconda coffee-mode cmm-mode clean-aindent-mode chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(projectile-use-git-grep t)
+ '(vc-follow-symlinks t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+)
