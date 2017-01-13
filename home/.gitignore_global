@@ -6,6 +6,7 @@
 npm-debug.log
 *.sqlite3
 *.db
+.pryrc
 .envrc
 .env
 \#*
