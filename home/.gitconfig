@@ -26,7 +26,7 @@
 	openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
 
 [ghq]
-    root = ~/.go/src
+	root = ~/dev
 [push]
 	default = matching
 [difftool "sourcetree"]
