@@ -1,6 +1,5 @@
 export PATH=/usr/local/bin:$PATH
 
-export GEM_HOME=$HOME
 export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init - zsh)"
 
