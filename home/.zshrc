@@ -13,9 +13,9 @@ antigen bundle oh-my-zsh
 antigen apply
 
 antigen use oh-my-zsh
-antigen theme ys
 
 source ~/.zshrc.custom
+source ~/.zshrc.prompt
 source ~/.zshrc.alias
 
 antigen bundle zsh-users/zsh-syntax-highlighting
