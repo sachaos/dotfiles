@@ -1,6 +1,7 @@
 [user]
 	email = takumasa.sakao@aktsk.jp
 	name = Takumasa Sakao
+	account = sachaos
 
 [core]
     editor = "emacsclient -nw -a ''"

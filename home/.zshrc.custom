@@ -142,8 +142,14 @@ mkcd () {
     mkdir -p $1 && cd $1
 }
 
-# enterでいろいろ表示させるようにする
+# mkdir & cd on ghq directory
+# prepare: git config --global user.account sachaos
+mkdev () {
+    local dir=$(ghq root)/github.com/$(git config user.account)/$1
+    mkdir -p $dir && cd $dir
+}
 
+# enterでいろいろ表示させるようにする
 function do-enter-pwd-and-ls-and-git-status () {
     echo
     pwd
