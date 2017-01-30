@@ -73,4 +73,4 @@ ${git_info}\
 %{$fg[white]%}[%*] \
 ${toggl_info} \
 $exit_code
-%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+%(?:%{$fg[green]%}$ :%{$fg[red]%}$ )%{$reset_color%}"
