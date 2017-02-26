@@ -39,8 +39,8 @@ local toggl_info='$(toggl_current)'
 toggl_current() {
   local tgc=$(toggl --cache --csv current)
   local tgc_time=$(echo $tgc | grep Duration | cut -d ',' -f 2)
-  local tgc_dsc=$(echo $tgc | grep Description | cut -d ',' -f 2 | cut -c 1-20)
-  local short_tgc_dsc=$(if [ $(echo $tgc_dsc | wc -m) -lt 20 ]; then echo $tgc_dsc; else echo "${tgc_dsc}.."; fi)
+  local tgc_dsc=$(echo $tgc | grep Description | cut -d ',' -f 2 | cut -c 1-15)
+  local short_tgc_dsc=$(if [ $(echo $tgc_dsc | wc -m) -lt 15 ]; then echo $tgc_dsc; else echo "${tgc_dsc}.."; fi)
   if [ ! -n "$tgc_time" ]; then
       echo "NoTimeEntry"
   else
