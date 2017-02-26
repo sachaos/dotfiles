@@ -10,8 +10,6 @@ export PATH=$PATH:~/bin
 export NVM_DIR="/Users/takumasa.sakao/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 
-[[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
-
 # android
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
