@@ -4,6 +4,15 @@ export TERM=xterm-256color
 export EDITOR='emacsclient -nw -a ""'
 
 ##########################################################
+## pet
+##########################################################
+function pet-exec() {
+    pet exec
+}
+zle -N pet-exec
+bindkey '^x^r' pet-exec
+
+##########################################################
 ## peco functions
 ##########################################################
 
@@ -164,9 +173,13 @@ function do-enter-pwd-and-ls-and-git-status () {
     echo
 }
 
-function do-enter-task-lists () {
+function do-enter-task-lists-and-working () {
     echo
+    echo -e "\e[0;33m--- tasks ---\e[0m"
     todoist --project-namespace --namespace --color list
+    echo
+    echo -e "\e[0;33m--- current task ---\e[0m"
+    toggl --cache current
     echo
     echo
 }
@@ -184,7 +197,7 @@ function do_enter () {
             do-enter-pwd-and-ls-and-git-status
             ;;
         1)
-            do-enter-task-lists
+            do-enter-task-lists-and-working
             ;;
         *)
             unset MY_ENTER_COUNT
