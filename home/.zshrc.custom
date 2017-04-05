@@ -55,7 +55,7 @@ zstyle ':completion:*' recent-dirs-insert both
 function peco-cdr () {
     local selected_dir=$(cdr -l | awk '{print $2}' | peco)
     if [ -n "$selected_dir" ]; then
-        local new_left="${LBUFFER} ${selected_dir} "
+        local new_left="cd ${selected_dir}"
         BUFFER=${new_left}${RBUFFER}
         CURSOR=${#new_left}
     fi
