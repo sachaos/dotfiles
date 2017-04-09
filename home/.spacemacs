@@ -68,6 +68,7 @@ values."
      nginx-mode
      dash
      s
+     string-inflection
      orgtbl-mode
      init-loader
      )

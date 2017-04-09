@@ -165,3 +165,6 @@ Uses `current-date-time-format' for the formatting the date/time"
 
 ;; disable auto magic comment on ruby-mode
 (defun ruby-mode-set-encoding () nil)
+
+;; string inflection setting
+(global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
