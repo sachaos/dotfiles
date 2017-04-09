@@ -12,3 +12,4 @@ end
 
 AR = ActiveRecord
 FG = FactoryGirl
+OST = OpenStruct
