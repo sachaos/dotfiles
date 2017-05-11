@@ -42,9 +42,9 @@ toggl_current() {
   local tgc_dsc=$(echo $tgc | grep Description | cut -d ',' -f 2 | cut -c 1-15)
   local short_tgc_dsc=$(if [ $(echo $tgc_dsc | wc -m) -lt 15 ]; then echo $tgc_dsc; else echo "${tgc_dsc}.."; fi)
   if [ ! -n "$tgc_time" ]; then
-      echo "NoTimeEntry"
+      echo "%{$bg[red]%}NoTimeEntry%{$reset_color%}"
   else
-      echo "[$tgc_time $short_tgc_dsc]"
+      echo "%{$bg[green]%}%{$fg[black]%}[$tgc_time $short_tgc_dsc]%{$reset_color%}"
   fi
 }
 
