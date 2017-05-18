@@ -153,6 +153,8 @@ Uses `current-date-time-format' for the formatting the date/time"
   (insert "\n")
   )
 
+(require 'org-table)
+
 ;; table settings
 (defun cleanup-org-tables ()
   (save-excursion
