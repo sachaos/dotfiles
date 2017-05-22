@@ -169,4 +169,15 @@ Uses `current-date-time-format' for the formatting the date/time"
 (defun ruby-mode-set-encoding () nil)
 
 ;; string inflection setting
+(require 'string-inflection)
 (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
+
+(add-hook 'markdown-mode-hook
+          #'(lambda()
+              (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
+
+;; ruby-block
+(require 'ruby-block)
+
+(ruby-block-mode t)
+(setq ruby-block-highlight-toggle t)

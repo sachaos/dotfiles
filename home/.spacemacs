@@ -40,7 +40,9 @@ values."
      erlang
      python
      lua
-     (go :variables go-tab-width 4)
+     (go :variables
+         go-tab-width 4
+         gofmt-command "goimports")
      yaml
      haskell
      syntax-checking
@@ -72,6 +74,7 @@ values."
      string-inflection
      orgtbl-mode
      init-loader
+     ruby-block
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
