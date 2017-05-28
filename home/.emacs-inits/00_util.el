@@ -1,6 +1,3 @@
-;; Load shell PATH as exec-path
-(setq exec-path (parse-colon-path (s-trim (shell-command-to-string "$SHELL -c 'echo $PATH'"))))
-
 ;; for google-translate
 (custom-set-variables
  '(google-translate-default-source-language "en")
