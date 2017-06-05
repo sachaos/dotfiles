@@ -5,5 +5,5 @@
 set -g default-shell $SHELL 
 set -g default-command "reattach-to-user-namespace -l ${SHELL}"
 
-bind -t emacs-copy M-w copy-pipe 'pbcopy'
+bind -T copy-mode M-w send-keys -X copy-pipe-and-cancel 'pbcopy'
 bind ] run-shell 'pbpaste | tmux load-buffer - \; paste-buffer -d'
