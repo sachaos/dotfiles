@@ -7,7 +7,6 @@ colors
 
 # load antigen plugins
 antigen bundle zsh-users/zsh-completions
-antigen bundle autoenv
 antigen bundle git
 antigen bundle oh-my-zsh
 antigen apply
