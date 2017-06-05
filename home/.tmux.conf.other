@@ -1,5 +1,6 @@
 #######################
 # Linux用設定ファイル #
 #######################
-bind -t emacs-copy M-w copy-pipe "xclip -i -sel p -f | xclip -i -sel c "
-bind ] run "xclip -o | tmux load-buffer - ; tmux paste-buffer"
+
+bind-key -T copy-mode M-w send-keys -X copy-pipe-and-cancel "xsel -pi && xsel -po | xsel -bi"
+bind-key ] run "xsel -o | tmux load-buffer - ; tmux paste-buffer"
