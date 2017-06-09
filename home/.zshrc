@@ -1,6 +1,5 @@
 source $HOME/.homesick/repos/dotfiles/home/.antigen/antigen.zsh
 source $HOME/.homesick/repos/homeshick/homeshick.sh
-source $HOME/.homesick/repos/dotfiles/home/.autoenv/activate.sh
 
 autoload -Uz colors
 colors
