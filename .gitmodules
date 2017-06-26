@@ -1,9 +1,6 @@
 [submodule "home/antigen"]
 	path = home/.antigen
 	url = git@github.com:zsh-users/antigen.git
-[submodule "home/.autoenv"]
-	path = home/.autoenv
-	url = git://github.com/kennethreitz/autoenv.git
 [submodule "home/.emacs.d"]
 	path = home/.emacs.d
 	url = git@github.com:syl20bnr/spacemacs.git
