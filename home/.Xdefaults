@@ -1,7 +1,7 @@
 URxvt.allow bold: true
 URxvt*font :\
-  xft:Source Code Pro:size=10:antialias=true, \
-  xft:Ricty:size=10:antialias=true
+  xft:Source Code Pro:size=12:antialias=true, \
+  xft:Ricty:size=12:antialias=true
 URxvt*letterSpace: -1
 
 URxvt*scrollBar: false
@@ -14,10 +14,14 @@ URxvt*inheritPixmap: True
 URxvt*foreground: #d0d0d0
 URxvt*cursorColor: #990000
 
-URxvt*perl-ext-common: ...,font-size
+URxvt*perl-ext-common: ...,font-size,xim-onthespot
+
 URxvt*keysym*C-equal: perl:font-size:increase
 URxvt*keysym*C-minus: perl:font-size:decrease
 URxvt*keysym*C-0: perl:font-size:reset
+
+URxvt*inputMethod: fcitx
+URxvt*preeditType: OnTheSpot
 
 ! blue
 ! from http://blog.asial.co.jp/262
