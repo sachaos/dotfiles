@@ -7,6 +7,7 @@
  '(global-linum-mode t)
  '(projectile-use-git-grep t)
  '(vc-follow-symlinks t)
+ '(groovy-indent-offset 2)
  )
 
 ;; mode-line view setting

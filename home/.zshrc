@@ -12,9 +12,9 @@ antigen apply
 
 antigen use oh-my-zsh
 
+source ~/.zshrc.alias
 source ~/.zshrc.custom
 source ~/.zshrc.prompt
-source ~/.zshrc.alias
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
