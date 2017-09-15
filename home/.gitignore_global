@@ -16,3 +16,4 @@ npm-debug.log
 .bundle/
 .ruby-version
 public/
+config/redis/
