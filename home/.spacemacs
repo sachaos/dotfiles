@@ -345,6 +345,7 @@ This function is called at the very end of Spacemacs initialization."
  '(global-linum-mode t)
  '(google-translate-default-source-language "en" t)
  '(google-translate-default-target-language "ja" t)
+ '(groovy-indent-offset 2)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
