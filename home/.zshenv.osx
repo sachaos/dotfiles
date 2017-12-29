@@ -18,5 +18,8 @@ asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git 2> /dev/null
 # android
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
+# gvm
+[[ -s "/Users/takumasa.sakao/.gvm/scripts/gvm" ]] && source "/Users/takumasa.sakao/.gvm/scripts/gvm"
+
 # other scripts
 export PATH=$PATH:~/bin/scripts
