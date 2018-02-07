@@ -12,7 +12,7 @@ URxvt*shading: 15
 URxvt*inheritPixmap: True
 
 URxvt*foreground: #d0d0d0
-URxvt*cursorColor: #990000
+URxvt*cursorColor: #006699
 
 URxvt*perl-ext-common: ...,font-size,xim-onthespot
 
