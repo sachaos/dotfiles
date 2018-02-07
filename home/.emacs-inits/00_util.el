@@ -179,3 +179,9 @@ Uses `current-date-time-format' for the formatting the date/time"
 
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)
+
+;; key binds
+(define-key evil-normal-state-map (kbd "o") (lambda ()
+                                              (interactive)
+                                              (evil-open-below 1)
+                                              (evil-force-normal-state)))
