@@ -18,3 +18,5 @@ source ~/.zshrc.prompt
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+
+[[ -s "/home/sachaos/.gvm/scripts/gvm" ]] && source "/home/sachaos/.gvm/scripts/gvm"
