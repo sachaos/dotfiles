@@ -174,14 +174,13 @@ Uses `current-date-time-format' for the formatting the date/time"
           #'(lambda()
               (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
 
-;; ruby-block
-(require 'ruby-block)
-
-(ruby-block-mode t)
-(setq ruby-block-highlight-toggle t)
-
 ;; key binds
 (define-key evil-normal-state-map (kbd "O") (lambda ()
                                               (interactive)
                                               (evil-open-below 1)
                                               (evil-force-normal-state)))
+
+(add-to-list 'auto-mode-alist '("\\.es6\\'" . js-jsx-mode))
+
+;; set shell
+(setq shell-file-name "/usr/bin/zsh")
