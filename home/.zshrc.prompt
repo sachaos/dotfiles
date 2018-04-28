@@ -5,72 +5,12 @@
 #
 # Mar 2013 Yad Smood
 
-# VCS
-YS_VCS_PROMPT_PREFIX1=" %{$fg[white]%}on%{$reset_color%} "
-YS_VCS_PROMPT_PREFIX2=":%{$fg[cyan]%}"
-YS_VCS_PROMPT_SUFFIX="%{$reset_color%}"
-YS_VCS_PROMPT_DIRTY=" %{$fg[red]%}x"
-YS_VCS_PROMPT_CLEAN=" %{$fg[green]%}o"
+# local exit_code="%(?,, C:%{$fg[red]%}%?%{$reset_color%})"
+# local exit_code=%(printf '%03d' %?)
 
-# Git info
-local git_info='$(git_prompt_info)'
-ZSH_THEME_GIT_PROMPT_PREFIX="${YS_VCS_PROMPT_PREFIX1}git${YS_VCS_PROMPT_PREFIX2}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="$YS_VCS_PROMPT_SUFFIX"
-ZSH_THEME_GIT_PROMPT_DIRTY="$YS_VCS_PROMPT_DIRTY"
-ZSH_THEME_GIT_PROMPT_CLEAN="$YS_VCS_PROMPT_CLEAN"
+# PROMPT="%{$fg[white]%}[%*]$exit_code \
+# %(?:%{$fg[green]%}8%) :%{$fg[red]%}8( )%{$reset_color%}"
 
-# HG info
-local hg_info='$(ys_hg_prompt_info)'
-ys_hg_prompt_info() {
-	# make sure this is a hg dir
-	if [ -d '.hg' ]; then
-		echo -n "${YS_VCS_PROMPT_PREFIX1}hg${YS_VCS_PROMPT_PREFIX2}"
-		echo -n $(hg branch 2>/dev/null)
-		if [ -n "$(hg status 2>/dev/null)" ]; then
-			echo -n "$YS_VCS_PROMPT_DIRTY"
-		else
-			echo -n "$YS_VCS_PROMPT_CLEAN"
-		fi
-		echo -n "$YS_VCS_PROMPT_SUFFIX"
-	fi
-}
-
-local toggl_info='$(toggl_current)'
-toggl_current() {
-  local tgc=$(toggl --cache --csv current)
-  local tgc_time=$(echo $tgc | grep Duration | cut -d ',' -f 2)
-  local tgc_dsc=$(echo $tgc | grep Description | cut -d ',' -f 2 | cut -c 1-15)
-  local short_tgc_dsc=$(if [ $(echo $tgc_dsc | wc -m) -lt 15 ]; then echo $tgc_dsc; else echo "${tgc_dsc}.."; fi)
-  if [ ! -n "$tgc_time" ]; then
-      echo "%{$bg[red]%}NoTimeEntry%{$reset_color%}"
-  else
-      echo "%{$bg[green]%}%{$fg[black]%}[$tgc_time $short_tgc_dsc]%{$reset_color%}"
-  fi
-}
-
-local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
-
-# Prompt format:
-#
-# PRIVILEGES USER @ MACHINE in DIRECTORY on git:BRANCH STATE [TIME] C:LAST_EXIT_CODE
-# $ COMMAND
-#
-# For example:
-#
-# % ys @ ys-mbp in ~/.oh-my-zsh on git:master x [21:47:42] C:0
-# $
-# %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
-# %{$fg[white]%}@ \
-# %{$fg[green]%}%m \
-# %{$fg[white]%}in \
-
-PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-%{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%}\
-${hg_info}\
-${git_info}\
- \
-%{$fg[white]%}[%*] \
-${toggl_info} \
-$exit_code
-%(?:%{$fg[green]%}$ :%{$fg[red]%}$ )%{$reset_color%}"
+local exit_code="%(?,,Code: %{$fg[red]%}%?%{$reset_color%})"
+PROMPT="$fg[blue]# [%*] $reset_color$exit_code
+$ "
