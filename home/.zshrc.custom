@@ -3,6 +3,25 @@ export TERM=xterm-256color
 # Editor
 export EDITOR='emacsclient -nw -a ""'
 
+autoload -Uz colors
+colors
+
+export HISTFILE=${HOME}/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=1000000
+
+function chpwd() {
+    if [ ! -z $TMUX ]; then
+        tmux refresh-client -S
+    fi
+}
+
+function precmd() {
+    if [ ! -z $TMUX ]; then
+        tmux refresh-client -S
+    fi
+}
+
 ##########################################################
 ## pet
 ##########################################################
