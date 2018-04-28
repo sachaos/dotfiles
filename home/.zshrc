@@ -1,21 +1,21 @@
-source $HOME/.homesick/repos/dotfiles/home/.antigen/antigen.zsh
+# source $HOME/.homesick/repos/dotfiles/home/.antigen/antigen.zsh
+source ~/.zplug/init.zsh
 
-autoload -Uz colors
-colors
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
 
-# load antigen plugins
-antigen bundle zsh-users/zsh-completions
-antigen bundle git
-antigen bundle oh-my-zsh
-antigen apply
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
-antigen use oh-my-zsh
+zplug load
 
 source ~/.zshrc.alias
 source ~/.zshrc.custom
 source ~/.zshrc.prompt
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
 
 [[ -s "/home/sachaos/.gvm/scripts/gvm" ]] && source "/home/sachaos/.gvm/scripts/gvm"
