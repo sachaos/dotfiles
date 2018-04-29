@@ -17,9 +17,9 @@ URxvt*cursorColor: #006699
 
 URxvt*perl-ext-common: ...,font-size,xim-onthespot
 
-URxvt*keysym*C-equal: perl:font-size:increase
-URxvt*keysym*C-minus: perl:font-size:decrease
-URxvt*keysym*C-0: perl:font-size:reset
+URxvt*keysym*C-equal: font-size:increase
+URxvt*keysym*C-minus: font-size:decrease
+URxvt*keysym*C-0: font-size:reset
 
 URxvt*inputMethod: fcitx
 URxvt*preeditType: OnTheSpot
