@@ -3,6 +3,8 @@ source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "sachaos/todoist", use:"*.sh"
+zplug "sachaos/git-recent-branch", use:"*.sh"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
