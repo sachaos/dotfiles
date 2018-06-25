@@ -26,3 +26,6 @@ export PATH=$PATH:~/google/go_appengine/
 
 # for gcloud
 export PATH=$PATH:~/google-cloud-sdk/bin/
+
+# for direnv
+eval "$(direnv hook zsh)"
