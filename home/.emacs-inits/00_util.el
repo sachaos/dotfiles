@@ -185,3 +185,8 @@ Uses `current-date-time-format' for the formatting the date/time"
                                               (interactive)
                                               (evil-open-below 1)
                                               (evil-force-normal-state)))
+
+;; json format
+(defun jq-format (beg end)
+  (interactive "r")
+  (shell-command-on-region beg end "jq ." nil t))
