@@ -2,6 +2,7 @@
 (custom-set-variables
  '(google-translate-default-source-language "en")
  '(google-translate-default-target-language "ja")
+ '(ruby-insert-encoding-magic-comment nil)
  '(enh-ruby-add-encoding-comment-on-save nil)
  '(enh-ruby-deep-indent-paren nil)
  '(global-linum-mode t)
