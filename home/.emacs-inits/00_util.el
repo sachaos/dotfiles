@@ -190,3 +190,5 @@ Uses `current-date-time-format' for the formatting the date/time"
 (defun jq-format (beg end)
   (interactive "r")
   (shell-command-on-region beg end "jq ." nil t))
+
+(setenv "GOROOT" (s-trim (shell-command-to-string "go env GOROOT")))
