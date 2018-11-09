@@ -304,7 +304,6 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(enh-ruby-add-encoding-comment-on-save nil)
  '(enh-ruby-deep-indent-paren nil)
- '(global-linum-mode t)
  '(google-translate-default-source-language "en")
  '(google-translate-default-target-language "ja")
  '(package-selected-packages
@@ -331,7 +330,6 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(enh-ruby-add-encoding-comment-on-save nil)
  '(enh-ruby-deep-indent-paren nil)
- '(global-linum-mode t)
  '(google-translate-default-source-language "en")
  '(google-translate-default-target-language "ja")
  '(package-selected-packages

@@ -4,7 +4,6 @@
  '(google-translate-default-target-language "ja")
  '(enh-ruby-add-encoding-comment-on-save nil)
  '(enh-ruby-deep-indent-paren nil)
- '(global-linum-mode t)
  '(projectile-use-git-grep t)
  '(vc-follow-symlinks t)
  '(groovy-indent-offset 2)
