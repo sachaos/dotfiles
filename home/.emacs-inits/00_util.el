@@ -183,4 +183,4 @@ Uses `current-date-time-format' for the formatting the date/time"
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js-jsx-mode))
 
 ;; set shell
-(setq shell-file-name "/usr/bin/zsh")
+(setq shell-file-name "/usr/local/bin/zsh")

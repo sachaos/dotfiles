@@ -135,18 +135,6 @@ function peco-gem () {
 }
 zle -N peco-gem
 
-####################
-# todoist commands #
-####################
-
-source $GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh
-
-##############################
-# git-recent-branch commands #
-##############################
-
-source $GOPATH/src/github.com/sachaos/git-recent-branch/git-recent-branch_functions.sh
-
 ##########################
 # toggl-todoist commands #
 ##########################

@@ -1,16 +1,16 @@
-# Clean, simple, compatible and meaningful.
-# Tested on Linux, Unix and Windows under ANSI colors.
-# It is recommended to use with a dark background.
-# Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
-#
-# Mar 2013 Yad Smood
+autoload -Uz vcs_info
 
-# local exit_code="%(?,, C:%{$fg[red]%}%?%{$reset_color%})"
-# local exit_code=%(printf '%03d' %?)
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
-# PROMPT="%{$fg[white]%}[%*]$exit_code \
-# %(?:%{$fg[green]%}8%) :%{$fg[red]%}8( )%{$reset_color%}"
+precmd () { vcs_info }
 
-local exit_code="%(?,,Code: %{$fg[red]%}%?%{$reset_color%})"
-PROMPT="$fg[blue]# [%*] $reset_color$exit_code
+setopt prompt_subst
+
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+local exit_code="%(?,,Exit:%{$fg[red]%}%?%{$reset_color%} )"
+PROMPT="$fg[cyan]# %d ${reset_color}${exit_code}[%*]
 $ "
