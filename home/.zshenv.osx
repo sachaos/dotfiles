@@ -1,11 +1,11 @@
 export PATH=/usr/local/bin:$PATH
 
-export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init - zsh)"
-
 export GOPATH=~/gocode
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/bin
+
+# other scripts
+export PATH=$PATH:~/bin/scripts
 
 # asdf
 . $HOME/.asdf/asdf.sh
@@ -14,12 +14,3 @@ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git 2> /dev/null
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git 2> /dev/null
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git 2> /dev/null
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git 2> /dev/null
-
-# android
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
-# gvm
-[[ -s "/Users/takumasa.sakao/.gvm/scripts/gvm" ]] && source "/Users/takumasa.sakao/.gvm/scripts/gvm"
-
-# other scripts
-export PATH=$PATH:~/bin/scripts

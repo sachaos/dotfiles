@@ -1,10 +1,12 @@
-# source $HOME/.homesick/repos/dotfiles/home/.antigen/antigen.zsh
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "sachaos/todoist", use:"*.sh"
-zplug "sachaos/git-recent-branch", use:"*.sh"
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+zplug "sachaos/todoist", use:"todoist_functions.sh"
+zplug "sachaos/git-recent-branch", use:"git-recent-branch_functions.sh"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -18,4 +20,3 @@ zplug load
 
 source ~/.zshrc.alias
 source ~/.zshrc.custom
-source ~/.zshrc.prompt
