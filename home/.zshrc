@@ -19,5 +19,3 @@ zplug load
 source ~/.zshrc.alias
 source ~/.zshrc.custom
 source ~/.zshrc.prompt
-
-[[ -s "/home/sachaos/.gvm/scripts/gvm" ]] && source "/home/sachaos/.gvm/scripts/gvm"

@@ -8,6 +8,9 @@
  '(projectile-use-git-grep t)
  '(vc-follow-symlinks t)
  '(groovy-indent-offset 2)
+ '(typescript-indent-level 2)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-markup-indent-offset 2)
  )
 
 ;; mode-line view setting
@@ -184,3 +187,4 @@ Uses `current-date-time-format' for the formatting the date/time"
 
 ;; set shell
 (setq shell-file-name "/usr/bin/zsh")
+(spacemacs-base/init-exec-path-from-shell)
