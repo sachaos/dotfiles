@@ -18,5 +18,8 @@ fi
 
 zplug load
 
+# direnv
+eval "$(direnv hook zsh)"
+
 source ~/.zshrc.alias
 source ~/.zshrc.custom
