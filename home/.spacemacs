@@ -18,10 +18,11 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(typescript
-     sql
+   '(sql
+     (typescript :variables
+                 typescript-fmt-on-save t
+                 typescript-fmt-tool 'prettier)
      scala
-     ocaml
      rust
      php
      csv
@@ -43,9 +44,13 @@ values."
      erlang
      python
      lua
+     ;; (go :variables
+     ;;     go-tab-width 4
+     ;;     gofmt-command "goimports"
+     ;;     flycheck-gometalinter-deadline "1s"
+     ;;     go-use-gometalinter t)
      (go :variables
-         go-tab-width 4
-         gofmt-command "goimports")
+         go-tab-width 4)
      yaml
      haskell
      syntax-checking
@@ -54,7 +59,6 @@ values."
            web-mode-markup-indent-offset 2)
      (javascript :variables
                  js2-basic-offset 2)
-     protobuf
      react
      shell-scripts
      csharp
@@ -293,6 +297,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq auto-save-default nil)
+  (setq go-format-before-save t)
+
   (init-loader-load "~/.emacs-inits")
   )
 
@@ -305,11 +311,13 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(enh-ruby-add-encoding-comment-on-save nil)
  '(enh-ruby-deep-indent-paren nil)
- '(google-translate-default-source-language "en")
- '(google-translate-default-target-language "ja")
+ '(global-linum-mode t)
+ '(google-translate-default-source-language "en" t)
+ '(google-translate-default-target-language "ja" t)
+ '(groovy-indent-offset 2)
  '(package-selected-packages
    (quote
-    (yapfify winum uuidgen utop tuareg caml toml-mode toc-org string-inflection sql-indent powerline racer py-isort pug-mode rake inflections phpunit phpcbf php-extras php-auto-yasnippets pcre2el spinner org-bullets shut-up ocp-indent ob-elixir noflet minitest merlin livid-mode skewer-mode simple-httpd live-py-mode link-hint json-snatcher json-reformat multiple-cursors js2-mode intero insert-shebang init-loader hydra hlint-refactor parent-mode projectile helm-hoogle request haml-mode go-guru gitignore-mode github-search gh marshal logito pcache ht fuzzy flycheck-rust pos-tip flycheck-mix flycheck-credo flycheck flx fish-mode eyebrowse evil-visual-mark-mode evil-unimpaired magit magit-popup git-commit ghub treepy graphql with-editor smartparens iedit evil-ediff anzu evil goto-chg undo-tree highlight erlang ensime sbt-mode scala-mode dumb-jump drupal-mode php-mode diminish dash-at-point csv-mode web-completion-data dash-functional tern company-shell company-ghci ghc haskell-mode column-enforce-mode cargo markdown-mode rust-mode inf-ruby bind-map bind-key yasnippet packed anaconda-mode pythonic f s company dash elixir-mode pkg-info epl helm avy helm-core async auto-complete popup omnisharp csharp-mode go-eldoc company-go go-mode lua-mode zeal-at-point yaml-mode ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shm scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-end rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf projectile-rails popwin pip-requirements persp-mode paradox page-break-lines orgit open-junk-file nginx-mode neotree move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh-md flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu enh-ruby-mode emmet-mode elisp-slime-nav define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghc company-cabal company-anaconda coffee-mode cmm-mode clean-aindent-mode chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (yapfify toml-mode string-inflection racer py-isort pug-mode rake inflections phpunit phpcbf php-extras php-auto-yasnippets shut-up ob-elixir noflet minitest livid-mode skewer-mode simple-httpd live-py-mode json-snatcher json-reformat multiple-cursors js2-mode intero insert-shebang init-loader hlint-refactor helm-hoogle haml-mode go-guru gitignore-mode github-search gh marshal logito pcache ht fuzzy flycheck-rust pos-tip flycheck-mix flycheck-credo flycheck fish-mode magit magit-popup git-commit ghub let-alist with-editor erlang ensime sbt-mode scala-mode drupal-mode php-mode csv-mode web-completion-data dash-functional tern company-shell company-ghci ghc haskell-mode cargo markdown-mode rust-mode inf-ruby yasnippet anaconda-mode pythonic company elixir-mode auto-complete tide typescript-mode omnisharp csharp-mode go-eldoc company-go go-mode lua-mode zeal-at-point yaml-mode ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shm scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-end rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf projectile-rails popwin pip-requirements persp-mode paradox page-break-lines orgit open-junk-file nginx-mode neotree move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh-md flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu enh-ruby-mode emmet-mode elisp-slime-nav define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghc company-cabal company-anaconda coffee-mode cmm-mode clean-aindent-mode chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(projectile-use-git-grep t)
  '(vc-follow-symlinks t))
 (custom-set-faces

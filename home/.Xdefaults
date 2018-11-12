@@ -1,8 +1,8 @@
 URxvt.allow bold: true
 URxvt*font :\
-  xft:Source Code Pro:size=10:antialias=true, \
-  xft:Ricty:size=12:antialias=true, \
-  xft:FontAwesome:size=12:antialias=true
+  xft:Source Code Pro:size=14:antialias=true, \
+  xft:Ricty:size=14:antialias=true, \
+  xft:FontAwesome:size=14:antialias=true
 URxvt*letterSpace: -1
 
 URxvt*scrollBar: false
@@ -17,9 +17,9 @@ URxvt*cursorColor: #006699
 
 URxvt*perl-ext-common: ...,font-size,xim-onthespot
 
-URxvt*keysym*C-equal: perl:font-size:increase
-URxvt*keysym*C-minus: perl:font-size:decrease
-URxvt*keysym*C-0: perl:font-size:reset
+URxvt*keysym*C-equal: font-size:increase
+URxvt*keysym*C-minus: font-size:decrease
+URxvt*keysym*C-0: font-size:reset
 
 URxvt*inputMethod: fcitx
 URxvt*preeditType: OnTheSpot
