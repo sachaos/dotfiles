@@ -112,7 +112,12 @@ function peco-select-gitadd() {
                                   peco --query "$LBUFFER" | \
                                   awk -F ' ' '{print $NF}')"
     if [ -n "$SELECTED_FILE_TO_ADD" ]; then
-        BUFFER="git add $(echo "$(git rev-parse --show-cdup)$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
+        local BUFFER="git add"
+        GIT_DIR=$(git rev-parse --show-cdup)
+
+        while read -r file; do
+            BUFFER="${BUFFER} ${GIT_DIR}$(echo $file | tr '\n' ' ')"
+        done <<< "$SELECTED_FILE_TO_ADD"
         CURSOR=$#BUFFER
     fi
 }
