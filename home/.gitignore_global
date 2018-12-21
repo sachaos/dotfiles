@@ -20,3 +20,4 @@ config/redis/
 .tool-versions
 android/app/.meghanada/
 .circleci/config-v2.yml
+.idea
