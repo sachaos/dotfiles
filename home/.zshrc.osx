@@ -1,6 +1,6 @@
 export PATH=/usr/local/bin:$PATH
 
-export GOPATH=~/gocode
+export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/bin
 

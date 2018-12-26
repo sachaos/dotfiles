@@ -23,3 +23,15 @@ eval "$(direnv hook zsh)"
 
 source ~/.zshrc.alias
 source ~/.zshrc.custom
+
+# Load each zshrc file by OSTYPE
+case "${OSTYPE}" in
+    # MacOSX
+    darwin*)
+        [ -f .zshrc.osx ] && source ~/.zshrc.osx
+        ;;
+    # Linux
+    linux*)
+        [ -f .zshrc.linux ] && source ~/.zshrc.linux
+        ;;
+esac
