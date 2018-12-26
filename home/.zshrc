@@ -18,12 +18,6 @@ fi
 
 zplug load
 
-# direnv
-eval "$(direnv hook zsh)"
-
-source ~/.zshrc.alias
-source ~/.zshrc.custom
-
 # Load each zshrc file by OSTYPE
 case "${OSTYPE}" in
     # MacOSX
@@ -35,3 +29,10 @@ case "${OSTYPE}" in
         [ -f .zshrc.linux ] && source ~/.zshrc.linux
         ;;
 esac
+
+# direnv
+eval "$(direnv hook zsh)"
+
+source ~/.zshrc.alias
+source ~/.zshrc.custom
+
