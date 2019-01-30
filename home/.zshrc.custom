@@ -35,6 +35,18 @@ bindkey '^x^r' pet-exec
 ## peco functions
 ##########################################################
 
+# peco ghq list
+function peco-ghq-list() {
+    local SELECTED_DIR=$(ghq list | peco --query "$LBUFFER")
+    if [ -n "$SELECTED_DIR" ]; then
+        local NEW_LEFT="cd $(ghq root)/${SELECTED_DIR}"
+        BUFFER=${NEW_LEFT}${RBUFFER}
+        CURSOR=${#NEW_LEFT}
+    fi
+}
+zle -N peco-ghq-list
+bindkey '^xd' peco-ghq-list
+
 # peco history
 function peco-select-history() {
     typeset tac
