@@ -33,6 +33,7 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
+     extra-langs
      dash
      emacs-lisp
      git
