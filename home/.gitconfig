@@ -5,7 +5,7 @@
 
 [core]
     editor = "emacsclient -nw -a ''"
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/takumasa.sakao/.gitignore_global
 
 [commit]
 	template = ~/.commit_template
@@ -44,3 +44,7 @@
 	includeStatusHeader = false
 	includePullRequestsSection = false
 	includeIssuesSection = false
+[http]
+	cookiefile = /Users/takumasa.sakao/.gitcookies
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh

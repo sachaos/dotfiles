@@ -15,9 +15,9 @@ npm-debug.log
 /vendor/
 .bundle/
 .ruby-version
-public/
 config/redis/
 .tool-versions
 android/app/.meghanada/
 .circleci/config-v2.yml
 .idea
+tmp
