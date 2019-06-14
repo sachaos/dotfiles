@@ -1,0 +1,22 @@
+# enter fullscreen mode for the focused container
+cmd - y : chunkc tiling::window --toggle fullscreen
+
+# change focus
+cmd - h : chunkc tiling::window --focus west
+cmd - j : chunkc tiling::window --focus south
+cmd - k : chunkc tiling::window --focus north
+cmd - l : chunkc tiling::window --focus east
+
+# move focused window
+cmd + ctrl - h : chunkc tiling::window --warp west
+cmd + ctrl - j : chunkc tiling::window --warp south
+cmd + ctrl - k : chunkc tiling::window --warp north
+cmd + ctrl - l : chunkc tiling::window --warp east
+
+# move window above monitor
+cmd + ctrl + shift - h : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
+cmd + ctrl + shift - l : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
+
+# move monitor focus
+cmd + shift - h : chunkc tiling::monitor -f next
+cmd + shift - l : chunkc tiling::monitor -f prev
