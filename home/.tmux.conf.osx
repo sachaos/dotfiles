@@ -2,8 +2,3 @@
 # osx用 設定ファイル #
 ######################
 
-set -g default-shell $SHELL 
-set -g default-command "reattach-to-user-namespace -l ${SHELL}"
-
-bind -T copy-mode M-w send-keys -X copy-pipe-and-cancel 'pbcopy'
-bind ] run-shell 'pbpaste | tmux load-buffer - \; paste-buffer -d'
