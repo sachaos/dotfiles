@@ -1,22 +1,21 @@
 # enter fullscreen mode for the focused container
-cmd - y : chunkc tiling::window --toggle fullscreen
+cmd - y : yabai -m window --toggle fullscreen
 
 # change focus
-cmd - h : chunkc tiling::window --focus west
-cmd - j : chunkc tiling::window --focus south
-cmd - k : chunkc tiling::window --focus north
-cmd - l : chunkc tiling::window --focus east
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
 
 # move focused window
-cmd + ctrl - h : chunkc tiling::window --warp west
-cmd + ctrl - j : chunkc tiling::window --warp south
-cmd + ctrl - k : chunkc tiling::window --warp north
-cmd + ctrl - l : chunkc tiling::window --warp east
+cmd + ctrl - h : yabai -m window --warp west
+cmd + ctrl - j : yabai -m window --warp south
+cmd + ctrl - k : yabai -m window --warp north
+cmd + ctrl - l : yabai -m window --warp east
 
 # move window above monitor
-cmd + ctrl + shift - h : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f next
-cmd + ctrl + shift - l : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f prev
-
+cmd + ctrl + shift - h : yabai -m window --display 2; yabai -m display --focus 2
+cmd + ctrl + shift - l : yabai -m window --display 1; yabai -m display --focus 1
 # move monitor focus
-cmd + shift - h : chunkc tiling::monitor -f next
-cmd + shift - l : chunkc tiling::monitor -f prev
+cmd + shift - h : yabai -m display --focus 2
+cmd + shift - l : yabai -m display --focus 1
