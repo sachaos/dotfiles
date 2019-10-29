@@ -1,6 +1,7 @@
 # settings alias
 alias g=git
 alias ls=exa
+alias ll='ls -l'
 alias emacsq='/usr/bin/emacs -q'
 alias e='emacsclient -nw -a ""'
 alias emacs='emacsclient -nw -a ""'
