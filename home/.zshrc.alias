@@ -1,4 +1,5 @@
 # settings alias
+alias k=kubectl
 alias g=git
 alias ls=exa
 alias ll='ls -l'
