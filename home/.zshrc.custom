@@ -210,6 +210,20 @@ function do-enter-pwd-and-ls-and-git-status () {
     echo
 }
 
+function do-enter-pwd-and-ls-and-git-status-detail () {
+    echo
+    pwd
+    echo -e "\e[0;33m--- files ---\e[0m"
+    ls -a
+    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+        echo
+        echo -e "\e[0;33m--- git status ---\e[0m"
+        git status
+    fi
+    echo
+    echo
+}
+
 function do-enter-task-lists-and-working () {
     echo
     echo -e "\e[0;33m--- tasks ---\e[0m"
@@ -234,7 +248,7 @@ function do_enter () {
             do-enter-pwd-and-ls-and-git-status
             ;;
         1)
-            do-enter-task-lists-and-working
+            do-enter-pwd-and-ls-and-git-status-detail
             ;;
         *)
             unset MY_ENTER_COUNT
