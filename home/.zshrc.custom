@@ -124,6 +124,13 @@ function peco-kill-process() {
 zle -N peco-kill-process
 bindkey '^xk' peco-kill-process
 
+function peco-kill-process-force() {
+    ps -ef | peco | awk '{print $2}' | xargs kill -9
+    zle clear-screen
+}
+zle -N peco-kill-process-force
+bindkey '^xK' peco-kill-process-force
+
 # peco で github の branchを選択
 function peco-branch () {
   local branch=$(git branch -a | peco | tr -d ' ' | tr -d '*')
