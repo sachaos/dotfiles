@@ -19,5 +19,7 @@ config/redis/
 .tool-versions
 android/app/.meghanada/
 .circleci/config-v2.yml
-.idea
+.idea/
 tmp
+.DS_Store
+.idea

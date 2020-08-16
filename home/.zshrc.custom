@@ -64,11 +64,31 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+# peco build from history
+function peco-build-from-history() {
+    local current_buffer=$BUFFER
+    typeset tac
+    if which tac > /dev/null; then
+        tac=tac
+    else
+        tac='tail -r'
+    fi
+
+    local selected_command="$(fc -l -n 1 | eval $tac | peco)"
+    if [ -n "$selected_command" ]; then
+        BUFFER="${current_buffer}${selected_command}"
+        CURSOR=$#BUFFER
+    fi
+    zle clear-screen
+}
+zle -N peco-build-from-history
+bindkey '^xr' peco-build-from-history
+
 # peco find
 function peco-find() {
     local current_buffer=$BUFFER
     # .git系など不可視フォルダは除外
-    local selected_file="$(find . -maxdepth 8 ! -path "*/.git*" | grep -v '~$' | sort | peco | sed -e "s/)/\\\)/g" -e "s/(/\\\(/g" -e "s/\ /\\\ /g" -e "s/#/\\\#/g" | tr '\n' ' ')"
+    local selected_file="$(find . -maxdepth 8 ! -path "*/.git*" ! -path "*/node_modules/*"  | grep -v '~$' | sort | peco | sed -e "s/)/\\\)/g" -e "s/(/\\\(/g" -e "s/\ /\\\ /g" -e "s/#/\\\#/g" | tr '\n' ' ')"
     if [ -n "$selected_file" ]; then
         BUFFER="${current_buffer} ${selected_file}"
         CURSOR=$#BUFFER

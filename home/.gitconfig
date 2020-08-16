@@ -5,7 +5,7 @@
 
 [core]
     editor = "emacsclient -nw -a ''"
-	excludesfile = /Users/takumasa.sakao/.gitignore_global
+	excludesfile = ~/.gitignore_global
 
 [commit]
 	template = ~/.commit_template
