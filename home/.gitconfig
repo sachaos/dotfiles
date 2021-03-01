@@ -2,6 +2,7 @@
 	email = sakataku7@gmail.com
 	name = Takumasa Sakao
 	account = sachaos
+	signingkey = 5A9B07254C9DA9908E783B5FB9527B1ADCB73920
 
 [core]
     editor = "emacsclient -nw -a ''"
@@ -48,3 +49,5 @@
 	cookiefile = /Users/takumasa.sakao/.gitcookies
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
+[init]
+	defaultBranch = master

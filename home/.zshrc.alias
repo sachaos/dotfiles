@@ -1,5 +1,7 @@
 # settings alias
 alias k=kubectl
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+complete -F __start_kubectl k
 alias g=git
 alias ls=exa
 alias ll='ls -l'

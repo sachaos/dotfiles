@@ -5,9 +5,23 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/bin
 export PATH="/usr/local/sbin:$PATH"
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$PATH:~/anaconda3/bin/
 
 # other scripts
 export PATH=$PATH:~/bin/scripts
+
+# binutils
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+
+# android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# ghcup
+source /Users/sachaos/.ghcup/env
 
 # asdf
 . $HOME/.asdf/asdf.sh

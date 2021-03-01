@@ -88,7 +88,7 @@ bindkey '^xr' peco-build-from-history
 function peco-find() {
     local current_buffer=$BUFFER
     # .git系など不可視フォルダは除外
-    local selected_file="$(find . -maxdepth 8 ! -path "*/.git*" ! -path "*/node_modules/*"  | grep -v '~$' | sort | peco | sed -e "s/)/\\\)/g" -e "s/(/\\\(/g" -e "s/\ /\\\ /g" -e "s/#/\\\#/g" | tr '\n' ' ')"
+    local selected_file="$(fd | peco | sed -e "s/)/\\\)/g" -e "s/(/\\\(/g" -e "s/\ /\\\ /g" -e "s/#/\\\#/g" | tr '\n' ' ')"
     if [ -n "$selected_file" ]; then
         BUFFER="${current_buffer} ${selected_file}"
         CURSOR=$#BUFFER
@@ -226,6 +226,9 @@ function do-enter-pwd-and-ls-and-git-status () {
         echo -e "\e[0;33m--- git status ---\e[0m"
         git status -sb
     fi
+    echo
+    echo -e "\e[0;33m--- kubectx ---\e[0m"
+    kubectx -c
     echo
     echo
 }
