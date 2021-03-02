@@ -45,23 +45,21 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t
                       auto-completion-use-company-box nil)
      (lsp :variables
-          lsp-ui-doc-enable 'nil
           lsp-rust-server 'rust-analyzer)
-     (rust :variables
-           rust-backend 'lsp)
-     (go :variables
-         go-backend 'lsp)
-     (yaml :variables yaml-enable-lsp t)
+     git
+     ;; (rust :variables
+     ;;       rust-backend 'lsp)
+     go
+     ;; (yaml :variables yaml-enable-lsp t)
      ;; better-defaults
      emacs-lisp
-     git
      helm
      markdown
-     multiple-cursors
+     ;; multiple-cursors
      ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
@@ -539,7 +537,7 @@ before packages are loaded."
   (setq vc-follow-symlinks t)
   (setq auto-revert-check-vc-info t)
 
-  (global-company-mode)
+  ;; (global-company-mode)
 
   (require 'git-commit)
   (global-git-commit-mode t)
@@ -575,7 +573,7 @@ This function is called at the very end of Spacemacs initialization."
      ("XXX+" . "#dc752f")
      ("\\?\\?\\?+" . "#dc752f")))
  '(package-selected-packages
-   '(lsp-origami dap-mode bui yaml-mode lsp-treemacs helm-lsp company-quickhelp company-go cargo toml-mode ron-mode racer lsp-ui origami lsp-mode godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc flycheck-rust flycheck-pos-tip go-mode rust-mode auto-yasnippet ac-ispell yasnippet-snippets helm-company helm-c-yasnippet fuzzy pos-tip yasnippet auto-complete treemacs-magit cfrs posframe smeargle magit-svn magit-section magit-gitflow magit-popup helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link forge magit ghub closql emacsql-sqlite emacsql treepy git-commit with-editor transient vmd-mode valign mmm-mode markdown-toc markdown-mode gh-md emoji-cheat-sheet-plus company-emoji company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+   '(lsp-origami dap-mode bui yaml-mode lsp-treemacs helm-lsp company-quickhelp cargo toml-mode ron-mode racer lsp-ui origami lsp-mode godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc flycheck-rust flycheck-pos-tip go-mode rust-mode auto-yasnippet ac-ispell yasnippet-snippets helm-company helm-c-yasnippet fuzzy pos-tip yasnippet auto-complete treemacs-magit cfrs posframe smeargle magit-svn magit-section magit-gitflow magit-popup helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link forge magit ghub closql emacsql-sqlite emacsql treepy git-commit with-editor transient vmd-mode valign mmm-mode markdown-toc markdown-mode gh-md emoji-cheat-sheet-plus company-emoji company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
  '(pdf-view-midnight-colors '("#b2b2b2" . "#262626")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
