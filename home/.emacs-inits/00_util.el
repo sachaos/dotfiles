@@ -1,20 +1,10 @@
-;; for google-translate
-(custom-set-variables
- '(google-translate-default-source-language "en")
- '(google-translate-default-target-language "ja")
- '(enh-ruby-add-encoding-comment-on-save nil)
- '(enh-ruby-deep-indent-paren nil)
- '(projectile-use-git-grep t)
- '(vc-follow-symlinks t)
- '(groovy-indent-offset 2)
- '(web-mode-code-indent-offset 2)
- '(web-mode-markup-indent-offset 2)
- '(typescript-indent-level 2)
- )
+;; Follow symlinks
+(setq vc-follow-symlinks t)
+(setq auto-revert-check-vc-info t)
 
-;; mode-line view setting
-(setq powerline-default-separator 'bar)
-(setq dotspacemacs-mode-line-unicode-symbols nil)
+;; Enable git-commit mode on Commit Editor
+(require 'git-commit)
+(global-git-commit-mode t)
 
 ;; keybindings
 (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
@@ -87,9 +77,6 @@
                    "\\.zshrc.linux\\'"
                    "\\.zshrc.osx\\'"))
   (add-to-list 'auto-mode-alist (cons pattern 'sh-mode)))
-
-(dolist (pattern '("\\.schema\\'"))
-  (add-to-list 'auto-mode-alist (cons pattern 'ruby-mode)))
 
 ;; CUA OS copypasta even in ncurses mode
 (case system-type
